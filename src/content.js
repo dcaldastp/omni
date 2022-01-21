@@ -160,11 +160,11 @@ $(document).ready(function(){
 		if ($(".omni-extension input").val().toLowerCase().startsWith("/remove")) {
 			chrome.runtime.sendMessage({request:"remove", type:action.type, action:action});
 		} else if ($(".omni-extension input").val().toLowerCase().startsWith("/history")) {
-			window.open($(".omni-item-active").attr("data-url"), "_self");
+			window.open($(".omni-item-active").attr("data-url"), "_blank");
 		} else {
 			chrome.runtime.sendMessage({request:action.action, tab:action});
 			if (action.action == "bookmark") {
-				window.open(action.url, "_self");
+				window.open(action.url, "_blank");
 			} else if (action.action == "scroll-bottom") {
 				window.scrollTo(0,document.body.scrollHeight);
 			} else if (action.action == "scroll-top") {
@@ -172,7 +172,7 @@ $(document).ready(function(){
 			} else if (action.action == "close-tab") {
 				window.close();
 			} else if (action.action == "navigation") {
-				window.open(action.url, "_self");
+				window.open(action.url, "_blank");
 			} else if (action.action == "fullscreen") {
 				var elem = document.documentElement;
 				elem.requestFullscreen();
@@ -181,7 +181,7 @@ $(document).ready(function(){
 			} else if (action.action == "email") {
 				window.open("mailto:");
 			} else if (action.action == "url") {
-				window.open(action.url, "_self");
+				window.open(action.url, "_blank");
 			}
 		}
 
